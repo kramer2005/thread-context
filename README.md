@@ -12,6 +12,8 @@ For example:
 
 ## Installation
 
+You can download the .deb package from the release tab or compile it with:
+
     git clone https://github.com/kramer2005/thread-context.git
     cd thread-context
     mkdir build
