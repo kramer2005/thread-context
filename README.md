@@ -54,6 +54,8 @@ To load the context, use the `get_context` function anywhere in the thread.
 UserContext* user_context = get_context();
 ```
 
+To free the context, use the `free_context` function.
+
 If no context is set, the function will return NULL.
 
 You can find an example inside the `examples` folder.
