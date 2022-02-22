@@ -16,6 +16,7 @@ typedef struct ThreadContext
 {
     pthread_t thread;           // The thread this context is running on. (Just a unsigned long)
     struct ThreadContext *next; // The next context in the list.
+    struct ThreadContext *prev; // The previous context in the list.
     void *data;                 // The data this context is running with.
 } ThreadContext;
 
@@ -33,5 +34,12 @@ void *get_context();
  * @return void* The context object.
  */
 void *set_context(void *data);
+
+/**
+ * @brief Remove the context object
+ * 
+ * @return void* The context object.
+ */
+void *free_context();
 
 #endif // __CONTEXT_MANAGER_H__

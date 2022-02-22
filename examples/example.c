@@ -18,8 +18,10 @@ void print_name(Context *ctx)
 void john_doe()
 {
     printf("\nSecondary thread\n");
+
     // Print no context
     Context *ctx = get_context();
+    printf("No context created\n");
     print_name(ctx);
 
     // Set context John Doe
@@ -31,6 +33,15 @@ void john_doe()
     // Get context John Doe and print it
     ctx = NULL;
     ctx = get_context();
+    printf("Context created\n");
+    print_name(ctx);
+
+
+    // Release context John Doe
+    free(free_context());
+    ctx = NULL;
+    ctx = get_context();
+    printf("Freed context\n");
     print_name(ctx);
 }
 
@@ -40,6 +51,7 @@ int main()
 
     // Print no context
     Context *ctx = get_context();
+    printf("No context created\n");
     print_name(ctx);
 
     // Set context Jane Doe
@@ -51,6 +63,7 @@ int main()
     // Print actual context Jane Doe
     ctx = NULL; // Just to show that it's recovering the context
     ctx = get_context();
+    printf("Context created\n");
     print_name(ctx);
 
     // Create thread for John Doe
@@ -63,5 +76,7 @@ int main()
     ctx = NULL;
     ctx = get_context();
     print_name(ctx);
+
+    free(free_context());
     return 0;
 }
